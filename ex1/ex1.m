@@ -1,6 +1,6 @@
 %% Exercise 1: Linear Regression
 
-%% ========== Plotting ==========
+%% ========== 1.Plotting ==========
 data = load('ex1data1.txt');
 X = data(:, 1);
 y = data(:, 2);
@@ -9,7 +9,7 @@ plotData(X, y);
 fprintf('Program paused, Press enter to continue.\n');
 pause;
 
-%% ========== Cost and Gradient descent ==========
+%% ========== 2.Cost and Gradient descent ==========
 X = [ones(m, 1), data(:, 1)];
 theta = zeros(2, 1);
 iterations = 2000;
@@ -49,7 +49,7 @@ fprintf('predict2:%f \n', predict2);
 fprintf('Program paused. Press enter to continue.\n');
 pause;
 
-%% ========= Visualizing J(theta_0, theta_1) ==========
+%% ========= 3.Visualizing J(theta_0, theta_1) ==========
 theta0_vals = linspace(-10, 10, 100);
 theta1_vals = linspace(-1, 4, 100);
 J_vals = zeros(length(theta0_vals), length(theta1_vals));
