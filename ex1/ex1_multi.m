@@ -42,6 +42,42 @@ fprintf(['Predicted price of a 1650 sq-ft, 3 br house(using gradient descent):\n
 fprintf('Program paused. Press enter to continue.\n');
 pause;
 
-%surf(X_temp(:, 1), X_temp(:, 2), repmat(X * theta, numel(X_temp(:, 1), numel(X_temp(:, 2)))));
+x1 = data(:, 1);
+x2 = data(:, 2);
+stem3(x1, x2, y);
+xlabel('X1');ylabel('X2');zlabel('Y');
+hold on;
+stem3(x1, x2, X * theta);
+hold off;
+pause;
+fprintf('Program paused. Press enter to continue.\n');
+
+scatter3(x1, x2, y, 'k');
+xlabel('X1');ylabel('X2');zlabel('Y');
+hold on;
+scatter3(x1, x2, X * theta, 'p');
+hold off;
+
+pause;
+fprintf('Program paused. Press enter to continue.\n');
+
+%% ================ 3.Normal Equations ================
+data = csvread('ex1data2.txt');
+X = data(:, 1:2);
+y = data(:, 3);
+m = length(y);
+
+X = [ones(m, 1), X];
+theta = normalEqn(X, y);
+fprintf('Theta computed from the normal equations: \n');
+fprintf(' %f \n', theta);
+fprintf('\n');
+
+price = [1 1650 3] * theta;
+fprintf(['Predicted price of a 1650 sq-ft, 3 br house(using normal equations):\n $%f\n'], price);
+
+
+
+
 
 
