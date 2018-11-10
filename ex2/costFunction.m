@@ -6,6 +6,6 @@ J = 0;
 gradient = zeros(size(theta));
 J = -1 * sum(y .* log(sigmoid(X * theta)) + (1 - y) .* log(1 - sigmoid(X * theta))) / m;
 
-gradient = (X' * (sigmoid(X * theta - y))) / m
+gradient = (X' * (sigmoid(X * theta) - y)) / m;
 
 endfunction
