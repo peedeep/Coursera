@@ -41,15 +41,24 @@ pause;
 
 %% ============ 3.Optimizing using fminunc ============
 options = optimset('GradObj', 'on', 'MaxIter', 400);
-[theta, J, exitFlag] = fminunc(@(t)costFunction(X, y, t), initial_theta, options);
+[theta, J, exitFlag, output] = fminunc(@(t)costFunction(X, y, t), initial_theta, options);
 
 % Print theta to screen
+fprintf('exitFlag: %f\n', exitFlag);
 fprintf('J at theta found by fminunc: %f\n', J);
 fprintf('Expected J (approx): 0.203\n');
 fprintf('theta: \n');
 fprintf(' %f \n', theta);
 fprintf('Expected theta (approx):\n');
 fprintf(' -25.161\n 0.206\n 0.201\n');
+
+plotDecisionBoundary(X, y, theta);
+hold on;
+xlabel('Exam 1 score')
+ylabel('Exam 2 score')
+legend('Admitted', 'Not admitted')
+hold off;
+
 
 
 
