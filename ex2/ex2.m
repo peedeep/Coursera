@@ -41,7 +41,7 @@ pause;
 
 %% ============ 3.Optimizing using fminunc ============
 options = optimset('GradObj', 'on', 'MaxIter', 400);
-[theta, J, exitFlag, output] = fminunc(@(t)costFunction(X, y, t), initial_theta, options);
+[theta, J, exitFlag] = fminunc(@(t)costFunction(X, y, t), initial_theta, options);
 
 % Print theta to screen
 fprintf('exitFlag: %f\n', exitFlag);
@@ -59,6 +59,19 @@ ylabel('Exam 2 score')
 legend('Admitted', 'Not admitted')
 hold off;
 
+fprintf('\nProgram paused. Press enter to continue.\n');
+pause;
 
+%% ============ 4.Predict and Accuracies ============
+
+prob = sigmoid([1 45 85] * theta);
+fprintf(['For a student with scores 45 and 85, we predict an admission probability of %f\n'], prob);
+fprintf('Expected value: 0.775 +/- 0.002\n\n');
+
+p = predict(X, theta);
+fprintf('p: %d\n', p);
+fprintf('Train Accuracy: %f\n', mean(double(p == y)) * 100);
+fprintf('Expected accuracy (approx): 89.0\n');
+fprintf('\n')
 
 

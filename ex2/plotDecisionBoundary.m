@@ -22,6 +22,17 @@ else
 	end
 	z = z';
 	contour(u, v, z, [0,0], 'LineWidth', 2);
+	hold on;
+	title('lambda = 100')
+	% Labels and Legend
+	xlabel('Microchip Test 1')
+	ylabel('Microchip Test 2')
+	legend('y = 1', 'y = 0', 'Decision boundary')
+	hold off
+	pause;
+	figure;
+	surf(u, v, z);
 end
+
 
 endfunction
