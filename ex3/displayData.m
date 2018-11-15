@@ -56,4 +56,4 @@ axis image off
 
 drawnow;
 
-end
+endfunction

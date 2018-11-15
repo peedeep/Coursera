@@ -4,6 +4,8 @@
 data = load('ex1data1.txt');
 X = data(:, 1);
 y = data(:, 2);
+fprintf('%d\n', size(X));
+fprintf('%d\n', size(y));
 m = length(y);
 plotData(X, y);
 fprintf('Program paused, Press enter to continue.\n');
