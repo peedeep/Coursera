@@ -26,6 +26,7 @@ fprintf('J at initial theta (zeros): %f\n', J);
 fprintf('Expected J (approx): 0.693\n');
 fprintf('Gradient at initial theta (zeros) - first five values only:\n');
 fprintf(' %f \n', gradient(1:5));
+fprintf('size of gradient %d \n', size(gradient));
 fprintf('Expected gradients (approx) - first five values only:\n');
 fprintf(' 0.0085\n 0.0188\n 0.0001\n 0.0503\n 0.0115\n');
 
