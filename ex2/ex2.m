@@ -19,6 +19,7 @@ pause;
 %% ============ 2.Compute Cost and Gradient ============
 [m, n] =  size(X);
 X = [ones(m, 1) X];
+fprintf('size: %d', size(X));
 initial_theta = zeros(n + 1, 1);
 [J, gradient] = costFunction(X, y, initial_theta);
 
