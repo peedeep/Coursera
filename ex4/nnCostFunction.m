@@ -6,8 +6,6 @@ Theta2 = reshape(nn_params(1 + (hidden_layer_size * (input_layer_size + 1)):end)
 
 m = size(X, 1);
 J = 0;
-Theta1_grad = zeros(size(Theta1));
-Theta2_grad = zeros(size(Theta2));
 
 %% 对y进行处理 Y(find(y==3))= [0 0 1 0 0 0 0 0 0 0]; 用于 Feedforward cost function 1和2   
 Y=[];
@@ -23,11 +21,11 @@ a2 = sigmoid(X * Theta1');
 a2 = [ones(m, 1) a2];      
 a3 = sigmoid(a2 * Theta2');  
 
-temp1 = [zeros(size(Theta1,1),1) Theta1(:, 2:end)];
-temp2 = [zeros(size(Theta2,1),1) Theta2(:, 2:end)];
+Theta1_temp = [zeros(size(Theta1,1),1) Theta1(:,2:end)];
+Theta2_temp = [zeros(size(Theta2,1),1) Theta2(:,2:end)];
 
-temp1 = sum(temp1 .^ 2);
-temp2 = sum(temp2 .^ 2);
+temp1 = sum(Theta1_temp .^ 2);
+temp2 = sum(Theta2_temp .^ 2);
 
 cost = Y .* log(a3) + (1 - Y) .* log((1 - a3));
 J= -1 / m * sum(cost(:)) + lambda/(2*m) * (sum(temp1(:)) + sum(temp2(:))); 
@@ -58,8 +56,8 @@ for t = 1:m
 end
 
 % step 5
-Theta1_temp = [zeros(size(Theta1,1),1) Theta1(:,2:end)];
-Theta2_temp = [zeros(size(Theta2,1),1) Theta2(:,2:end)];
+Theta1_grad = zeros(size(Theta1));
+Theta2_grad = zeros(size(Theta2));
 Theta1_grad = 1 / m * delta_1 + lambda/m * Theta1_temp;
 Theta2_grad = 1 / m * delta_2 + lambda/m * Theta2_temp;
 
