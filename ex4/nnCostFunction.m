@@ -43,11 +43,11 @@ a2 = sigmoid(X * Theta1');   % 第二层激活函数输出
 a2 = [ones(m, 1) a2];        % 第二层加入b
 a3 = sigmoid(a2 * Theta2');  
 
-temp1 = [zeros(size(Theta1, 1),1) Theta1(:, 2:end)];
-temp1 = [zeros(size(Theta2, 1),1) Theta2(:, 2:end)];
+temp1 = [zeros(size(Theta1,1),1) Theta1(:, 2:end)];
+temp2 = [zeros(size(Theta2,1),1) Theta2(:, 2:end)];
 
 temp1 = sum(temp1 .^ 2);
-temp2 = sum(temp1 .^ 2);
+temp2 = sum(temp2 .^ 2);
 
 cost = Y .* log(a3) + (1 - Y) .* log((1 - a3));  % cost是m*K(5000*10)的结果矩阵  sum(cost(:))全部求和
 J= -1 / m * sum(cost(:)) + lambda/(2*m) * (sum(temp1(:)) + sum(temp2(:))); 

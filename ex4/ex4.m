@@ -37,7 +37,7 @@ fprintf('\nChecking Cost Function (w/ Regularization) ... \n')
 lambda = 1;
 
 J = nnCostFunction(X, y, nn_params, lambda, input_layer_size, hidden_layer_size, num_labels);
-fprintf('Cost at parameters (loaded from ex4weights): %f \n(this value should be about 0.287629)\n', J);
+fprintf('Cost at parameters (loaded from ex4weights): %f \n(this value should be about 0.383770)\n', J);
 
 fprintf('\nProgram paused. Press enter to continue.\n');
 pause;
