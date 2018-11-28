@@ -5,8 +5,14 @@ sel = randperm(m);
 sel = sel(1:100);
 displayData(X(sel, :));
 
+fprintf('\nProgram paused. Press enter to continue.\n');
+pause;
+
 %% =========== 2.Loading Parameters =============
 fprintf('\nLoading Saved Neural Network Parameters ...\n')
+
+% Load the weights into variables Theta1 and Theta2
+load('ex4weights.mat');
 
 % Unroll parameters
 nn_params = [Theta1(:) ; Theta2(:)];
@@ -26,10 +32,12 @@ fprintf('\nProgram paused. Press enter to continue.\n');
 pause;
 
 %% =========== 4.Implement Regularization =============
+fprintf('\nChecking Cost Function (w/ Regularization) ... \n')
+
 lambda = 1;
 
 J = nnCostFunction(X, y, nn_params, lambda, input_layer_size, hidden_layer_size, num_labels);
-fprintf(['Cost at parameters (loaded from ex4weights): %f \n(this value should be about 0.287629)\n'], J);
+fprintf('Cost at parameters (loaded from ex4weights): %f \n(this value should be about 0.287629)\n', J);
 
 fprintf('\nProgram paused. Press enter to continue.\n');
 pause;
