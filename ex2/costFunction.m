@@ -8,4 +8,4 @@ J = -1 * sum(y .* log(sigmoid(X * theta)) + (1 - y) .* log(1 - sigmoid(X * theta
 
 gradient = (X' * (sigmoid(X * theta) - y)) / m;
 
-endfunction
+end

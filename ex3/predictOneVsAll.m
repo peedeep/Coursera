@@ -7,4 +7,4 @@ p = zeros(m, 1);
 X = [ones(m, 1) X];
 [a, p] = max(sigmoid(X * theta'), [], 2);
 
-endfunction
+end

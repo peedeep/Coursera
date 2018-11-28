@@ -7,4 +7,4 @@ g = sigmoid(X * theta);
 k = find(g >= 0.5);
 p(k) = 1;
 
-endfunction
+end

@@ -7,7 +7,7 @@ Theta2 = reshape(nn_params(1 + (hidden_layer_size * (input_layer_size + 1)):end)
 m = size(X, 1);
 J = 0;
 
-%% 对y进行处理 Y(find(y==3))= [0 0 1 0 0 0 0 0 0 0]; 用于 Feedforward cost function 1和2   
+%% 对y进行处理 Y(find(y==3))= [0 0 1 0 0 0 0 0 0 0]; 用于 Feedforward cost function 1�?2   
 Y=[];
 E = eye(num_labels);  
 for i = 1 : num_labels
@@ -62,6 +62,6 @@ Theta1_grad = 1 / m * delta_1 + lambda/m * Theta1_temp;
 Theta2_grad = 1 / m * delta_2 + lambda/m * Theta2_temp;
 
 % Unroll gradients
-grad = [Theta1_grad(:) ; Theta2_grad(:)];
+gradient = [Theta1_grad(:) ; Theta2_grad(:)];
 
-endfunction
+end

@@ -9,4 +9,4 @@ h1 = sigmoid([ones(m, 1) X] * Theta1);
 h2 = sigmoid([ones(m, 1) h1] * Theta2);
 [a, p] = max(h2, [], 2);
 
-endfunction
+end

@@ -11,4 +11,4 @@ gradient = (X' * (sigmoid(X * theta) - y)) / m + lambda / m * theta_temp;
 
 gradient = gradient(:);
 
-endfunction
+end

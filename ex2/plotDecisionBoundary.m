@@ -34,5 +34,4 @@ else
 	surf(u, v, z);
 end
 
-
-endfunction
+end

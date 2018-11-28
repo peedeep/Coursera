@@ -11,4 +11,4 @@ a2 = [ones(m, 1) a2]
 a3 = sigmoid(a2 * Theta2');
 [a, p] = max(a3, [], 2);
 
-endfunction
+end

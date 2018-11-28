@@ -12,4 +12,4 @@ for k = 1 : num_labels
 	theta(k, :) = fmincg(@(t)(lrCostFunction(X, (y == k), t, lambda)), initial_theta, options);
 end
 
-endfunction
+end

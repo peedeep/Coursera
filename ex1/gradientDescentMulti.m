@@ -8,4 +8,4 @@ for iter = 1 : num_iters
 	J_history(iter) = computeCostMulti(X, y, theta);
 end
 
-endfunction
+end
