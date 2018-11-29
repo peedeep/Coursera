@@ -60,9 +60,50 @@ initial_Theta2 = randInitializeWeights(hidden_layer_size, num_labels);
 
 initial_nn_params = [initial_Theta1(:) ; initial_Theta2(:)];
 
-
 %% =========== 7.Implement Backpropagation =============
+fprintf('\nChecking Backpropagation... \n');
+
+checkNNGradients;
+
+fprintf('Program paused. Press enter to continue.\n');
+pause;
+
 %% =========== 8.Implement Regularization =============
+fprintf('\nChecking Backpropagation Regularization... \n');
+lambda = 3;
+checkNNGradients(lambda);
+
+debug_J = nnCostFunction(X, y, nn_params, lambda, input_layer_size, hidden_layer_size, num_labels);
+fprintf('debug J %f\n should be 0.576051\n', debug_J);
+
+fprintf('Program paused. Press enter to continue.\n');
+pause;
+
 %% =========== 9.Training NN =============
+fprintf('\nTraining NN... \n');
+options = optimset('MaxIter', 50);
+lambda = 1;
+costFunction = @(p)nnCostFunction(X, y, p, lambda, input_layer_size, hidden_layer_size, num_labels);
+
+[nn_params, J] = fmincg(costFunction, initial_nn_params, options);
+
+Theta1 = reshape(nn_params(1: hidden_layer_size * (input_layer_size + 1)), hidden_layer_size, (input_layer_size + 1));
+Theta2 = reshape(nn_params(1 + (hidden_layer_size * (input_layer_size + 1)):end), num_labels, (hidden_layer_size + 1));
+
+fprintf('Program paused. Press enter to continue.\n');
+pause;
+
 %% =========== 10.Visualize Weights =============
+fprintf('\nVisualize Weights... \n');
+displayData(Theta1(:, 2:end));
+
+fprintf('Program paused. Press enter to continue.\n');
+pause;
+
 %% =========== 11.Implement Predict =============
+fprintf('\nImplement Predict... \n');
+
+pred = predict(Theta1, Theta2, X);
+fprintf('\n Training set Accuracy: %f', mean(double(pred == y)) * 100);
+
+

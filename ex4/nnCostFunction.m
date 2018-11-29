@@ -7,11 +7,11 @@ Theta2 = reshape(nn_params(1 + (hidden_layer_size * (input_layer_size + 1)):end)
 m = size(X, 1);
 J = 0;
 
-%% 对y进行处理 Y(find(y==3))= [0 0 1 0 0 0 0 0 0 0]; 用于 Feedforward cost function 1�?2   
+%% Y(find(y==3))= [0 0 1 0 0 0 0 0 0 0];   
 Y=[];
 E = eye(num_labels);  
 for i = 1 : num_labels
-    Y0 = find(y == i);    % 找到等于y=i的序列号,替换向量
+    Y0 = find(y == i);    % vector
     Y(Y0,:) = repmat(E(i,:), size(Y0,1), 1);
 end
 
@@ -28,15 +28,15 @@ temp1 = sum(Theta1_temp .^ 2);
 temp2 = sum(Theta2_temp .^ 2);
 
 cost = Y .* log(a3) + (1 - Y) .* log((1 - a3));
-J= -1 / m * sum(cost(:)) + lambda/(2*m) * (sum(temp1(:)) + sum(temp2(:))); 
+J = -1 / m * sum(cost(:)) + lambda/(2*m) * (sum(temp1(:)) + sum(temp2(:))); 
 
 %% Graident
 delta_1 = zeros(size(Theta1));
 delta_2 = zeros(size(Theta2));
 
-for t = 1:m
+for i = 1:m
 	% step 1
-	a_1 = X(t, :)';
+	a_1 = X(i, :)';
 	z_2 = Theta1 * a_1;
 	a_2 = sigmoid(z_2);
 	a_2 = [1; a_2];
@@ -45,7 +45,7 @@ for t = 1:m
 	% step 2
 	err_3 = zeros(num_labels, 1);
 	for k = 1:num_labels
-		err_3(k) = a_3(k) - (y(t) == k);
+		err_3(k) = a_3(k) - (y(i) == k);
 	end
 	% step 3
 	err_2 = Theta2' * err_3;
