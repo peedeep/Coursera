@@ -1,2 +1,2 @@
 # Coursera
-Coursera机器学习练习
+Coursera机器学习
