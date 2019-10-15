@@ -98,7 +98,7 @@ pause;
 
 %% =========== Part 7: Learning Curve for Polynomial Regression =============
 
-lambda = 100;
+lambda = 1;
 [theta] = trainLinearReg(X_poly, y, lambda);
 
 figure(1);
@@ -135,7 +135,7 @@ pause;
 [lambda_vec, error_train, error_val] = validationCurve(X_poly, y, X_poly_val, yval);
 
 close all;
-plot(lambda_vec, error_train, lambda, error_val);
+plot(lambda_vec, error_train, lambda_vec, error_val);
 legend('Train', 'Cross Validation');
 xlabel('lambda');
 ylabel('Error');
@@ -145,6 +145,53 @@ for i = 1:length(lambda_vec)
 	fprintf(' %f\t%f\t%f\n', ...
             lambda_vec(i), error_train(i), error_val(i));
 end
+
+fprintf('Program paused. Press enter to continue.\n');
+pause;
+
+
+%% =========== Part 9: Computing test set error =============
+
+close all;
+
+lambda = 3;
+[theta] = trainLinearReg(X_poly, y, lambda);
+J = linearRegCostFunction(X_poly_test, ytest, theta, lambda);
+Ytest = X_poly_test * theta;
+
+fprintf('J test is %f\n', J);
+
+figure(1);
+plot(Xtest, ytest, 'rx', 'MarkerSize', 10, 'LineWidth', 1.5);
+plotFit(min(Xtest), max(Xtest), mu, sigma, theta, p);
+xlabel('Change in water level (x)');
+ylabel('Water flowing out of the dam (y)');
+title (sprintf('Polynomial Regression Fit (lambda = %f)', lambda));
+
+figure(2);
+plot(Xtest, ytest, 'rx', 'MarkerSize', 10, 'LineWidth', 1.5);
+
+xlabel('Change in water level (x)');
+ylabel('Water flowing out of the dam (y)');
+title (sprintf('Polynomial Regression Fit (lambda = %f)', lambda));
+hold on;
+
+plot(Xtest, Ytest, 'ko', 'MarkerFaceColor', 'y', 'MarkerSize', 7);
+hold off;
+
+
+fprintf('Program paused. Press enter to continue.\n');
+pause;
+
+% plot curve
+close all;
+[error_train, error_val] = learningCurve(X_poly, y, X_poly_test, ytest, lambda);
+plot(1:m, error_train, 1:m, error_val);
+title(sprintf('Polynomial Regression Learning Curve (lambda = %f)', lambda));
+xlabel('Number of training examples')
+ylabel('Error')
+axis([0 13 0 100])
+legend('Train', 'Cross Validation')
 
 fprintf('Program paused. Press enter to continue.\n');
 pause;
